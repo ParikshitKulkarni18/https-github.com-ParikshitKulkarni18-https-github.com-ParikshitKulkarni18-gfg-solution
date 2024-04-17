@@ -1,0 +1,85 @@
+Lc Q 75 Sort color
+class Solution {
+public:
+    void sortColors(vector<int>& nums) {
+        int n=nums.size();
+        int index=0;
+        int left=0;
+        int right=n-1;
+        while(index<=right){
+            if(nums[index]==0){
+                swap(nums[index],nums[left]);
+                left++;
+                index++;
+            }
+            else if(nums[index]==2){
+                swap(nums[index],nums[right]);
+                right--;
+                // catch no need of index++
+            }
+            else{
+                index++;
+            }
+        }
+    }
+};
+
+
+//Lc 2149. Rearrange Array Elements by Sign
+class Solution {
+public:
+    vector<int> rearrangeArray(vector<int>& nums) {
+        vector<int>pos,neg;
+        for(int i=0;i<nums.size();i++){
+            if(nums[i]<0)
+                neg.push_back(nums[i]);
+            else
+                pos.push_back(nums[i]);
+        }
+        vector<int>ans;
+        int i=0;
+        while(i<pos.size()){
+            ans.push_back(pos[i]);
+            ans.push_back(neg[i]);
+            i++;
+        }
+        return ans;
+    }
+};
+
+//Lc 268. Missing Number
+class Solution {
+public:
+    int missingNumber(vector<int>& nums) {
+        int sum=0;
+        int n=nums.size();
+        for(int index=0;index<n;index++){
+            sum=sum+nums[index];
+        }
+        int totalSum=((n)*(n+1))/2;
+        int ans= totalSum-sum;
+        return ans;
+    }
+};
+
+//Lc 2149. Rearrange Array Elements by Sign
+class Solution {
+public:
+    vector<int> rearrangeArray(vector<int>& nums) {
+        vector<int>pos,neg;
+        for(int i=0;i<nums.size();i++){
+            if(nums[i]<0)
+                neg.push_back(nums[i]);
+            else
+                pos.push_back(nums[i]);
+        }
+        vector<int>ans;
+        int i=0;
+        while(i<pos.size()){
+            ans.push_back(pos[i]);
+            ans.push_back(neg[i]);
+            i++;
+        }
+        return ans;
+    }
+};
