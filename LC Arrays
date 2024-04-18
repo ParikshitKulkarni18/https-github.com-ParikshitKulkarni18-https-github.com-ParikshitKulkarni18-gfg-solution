@@ -223,3 +223,118 @@ class Solution
         return prefixsumApproach(nums);
      }
 };
+
+//LC Q 75 sort color
+// three approach 1 sorting  2 count and spread 3 threee pointer
+class Solution {
+public:
+    void sortColors(vector<int>& nums) {
+    //     int n=nums.size();
+    //     int index=0;
+    //     int left=0;
+    //     int right=n-1;
+    //     while(index<=right){
+    //         if(nums[index]==0){
+    //             swap(nums[index],nums[left]);
+    //             left++;
+    //             index++;
+    //         }
+    //         else if(nums[index]==2){
+    //             swap(nums[index],nums[right]);
+    //             right--;
+    //             // catch no need of index++
+    //         }
+    //         else{
+    //             index++;
+    //         }
+    //     }
+    // }
+
+    //counting
+//     int zeros,ones,twos;
+//     zeros = ones= twos = 0;
+//      for(int i=0;i<nums.size();i++){
+//         if(nums[i]== 0){
+//             zeros++;
+
+//         }
+//          else if(nums[i]==1){
+//             ones++;
+//         }
+//         else{
+//             twos++;
+//         }
+//      }
+//    // spread
+//     int i=0;
+//     while(zeros--){
+//         nums[i]=0;
+//         i++;
+//     }
+//     while(ones--){
+//         nums[i]=1;
+//         i++;
+//     }
+//     while(twos--){
+//         nums[i]=2;
+//         i++;
+//       }
+//     }
+
+// three pointer approach
+  int l=0,m=0,h=nums.size()-1;
+  while(m<=h){
+        if(nums[m]==0){
+            swap(nums[l],nums[m]);
+                l++,m++;
+     }
+  else if(nums[m]== 1){
+    m++;
+  }
+  else{
+    swap(nums[m],nums[h]);
+            h--; 
+             
+      }
+  }
+    }
+};
+
+//Lc 287  find the duplicate number
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+        // sort(nums.begin(),nums.end());{
+        //     for(int i=0;i<nums.size()-1;i++){
+        //         if(nums[i]== nums[i+1]){
+        //             return nums[i];
+        //         }
+        //     }
+        // }
+        // return -1;
+
+    //     //-ve marking solution
+    //     int ans=-1;
+    //     for(int i=0;i<nums.size();i++){
+    //         int index = abs(nums[i]);
+
+    //         //Already visited
+    //         if(nums[index]<0){
+    //             return index;
+    //         }
+    //         //visited mark
+    //         nums[index]*=-1;
+
+    //     }
+    //   return ans;
+
+    //Positing method
+
+    while(nums[0] != nums[nums[0]]){
+        swap(nums[0],nums[nums[0]]);
+    }
+     return nums[0];
+    }
+};
+
+//
