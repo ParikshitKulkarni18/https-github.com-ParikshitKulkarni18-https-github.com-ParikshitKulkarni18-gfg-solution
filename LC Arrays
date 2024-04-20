@@ -337,4 +337,102 @@ public:
     }
 };
 
-//
+// LC 54 Spriral Marix
+class Solution {
+public:
+    vector<int> spiralOrder(vector<vector<int>>& matrix) {
+        vector<int>ans;
+        int m = matrix.size();
+        int n = matrix[0].size();
+        int total_element = m*n;
+
+        int startingRow = 0;
+        int endingCol = n-1;
+
+        int endingRow = m-1;
+        int startingCol = 0;
+
+        int count =0;
+        while(count < total_element ){
+            // printing  startingRow 
+            for(int i= startingCol ;i<= endingCol &&count<total_element;i++){
+               ans.push_back(matrix[startingRow][i]);
+               count++;
+            }
+            startingRow++;
+            // Printing  EndingCol
+
+               for(int i= startingRow;i<= endingRow &&count<total_element;i++){
+               ans.push_back(matrix[i][endingCol]);
+               count++;
+            }
+            endingCol--;
+            //Printing Ending Row
+               for(int i= endingCol ;i>= startingCol&&count<total_element ;i--){
+               ans.push_back(matrix[endingRow][i]);
+               count++;
+            }
+            endingRow--;
+
+               // Printing  StartingCol
+
+               for(int i= endingRow ;i>= startingRow&& count<total_element ;i--){
+               ans.push_back(matrix[i][startingCol]);
+                    count++;
+            }
+            startingCol++;
+
+        }
+        return ans;
+    
+    }
+};
+
+
+// wave Printing
+#include <iostream>
+# include<vector>
+using namespace std;
+
+
+void wavePrintMatrix(vector<vector<int> > v){
+  int row = v.size();
+  int col = v[0].size();
+
+  for(int startcol =0;startcol<col;startcol++){
+    // for even col top-bottom
+    if((startcol &1)==0){
+      for(int i=0;i<row;i++){
+         cout<<v[i][startcol]<<" ";
+        // for row wise
+       // cout<<v[startcol][i]<<" ";
+      }
+    }
+    else{
+      // odd bottom-> top
+      for(int i=row-1;i>=0;i--){
+        cout<<v[i][startcol]<<" ";
+        // for row wise
+       // cout<<v[startcol][i]<<" ";
+      }
+    }
+  }
+}
+
+
+int main() {
+  vector<vector<int> > v{
+    {1,2,3,4},
+    {5,6,7,8},
+    {9,10,11,12},
+    {13,14,15,16},
+    {17,18,19,20}
+    
+  };
+
+  wavePrintMatrix(v);
+  return 0;
+  
+
+
+}
